@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "128184984107",
+    "firebase_url": "https://salaahapp-2bb94.firebaseio.com",
+    "project_id": "salaahapp-2bb94",
+    "storage_bucket": "salaahapp-2bb94.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:128184984107:android:172391e9c49a77d83b806e",
+        "android_client_info": {
+          "package_name": "com.example.salaahapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "128184984107-dsr8qnp3apsbm7bs3ca35r9n2je8tfdo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.salaahapp",
+            "certificate_hash": "006f338d406eed812e50d6bd58cf5d96c50371ea"
+          }
+        },
+        {
+          "client_id": "128184984107-39ojpnf0294fk8sf6bm80q3796nassht.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD3J7uP9yi3kz9JU1cPTCXpUK8JnsSHN1I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "128184984107-39ojpnf0294fk8sf6bm80q3796nassht.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

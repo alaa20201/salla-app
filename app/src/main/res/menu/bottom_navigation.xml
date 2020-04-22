@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigation_calendar"
+        android:icon="@drawable/ic_calendar_24dp"
+        android:title="Calender" />
+
+    <item
+        android:id="@+id/navigation_quran"
+        android:icon="@drawable/ic_quran_book_black_24dp"
+        android:title="Quran" />
+
+    <item
+        android:id="@+id/navigation_verse"
+        android:icon="@drawable/ic_books_black_24dp"
+        android:title="Verses" />
+
+
+
+</menu>

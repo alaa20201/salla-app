@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="30dp"
+    tools:context=".views.activities.activitiesLogin.LoginActivity">
+
+    <LinearLayout
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:src="@drawable/salaah_app_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_input_email_ayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+       >
+        <EditText
+            android:id="@+id/edit_text_username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="20dp"
+            android:hint="Email"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_input_password_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/edit_text_pass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:hint="Password"
+            android:inputType="textPassword" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2">
+        <CheckBox
+            android:layout_weight="1"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="0dp"
+            android:text="Remember me"
+            android:id="@+id/check_box_remember_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:textColor="#000"
+            android:textAlignment="textEnd"
+            android:layout_weight="1"
+            android:layout_marginTop="5dp"
+            android:clickable="true"
+            android:text="Forgot Password ?"
+            android:id="@+id/check_box_forgot_pass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <Button
+        android:textSize="22dp"
+        android:layout_marginTop="10dp"
+        android:id="@+id/button_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/layout_button"
+        android:textColor="#fff"
+        android:textAllCaps="false"
+        android:text="Login" />
+    <LinearLayout
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Don't have an account ? "
+            android:textAlignment="center" />
+        <TextView
+            android:id="@+id/new_user_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:text=" Sign Up Now"
+            android:textAlignment="center"
+            android:textColor="#AA5800" />
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:weightSum="2"
+        android:layout_marginTop="40dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <Button
+            android:layout_marginTop="3dp"
+            android:layout_weight="1"
+            android:id="@+id/fb"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/layout_button"
+            android:text="Sign in with FaceBook"
+            android:textAllCaps="false"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
+            android:layout_marginRight="5dp"/>
+
+        <com.google.android.gms.common.SignInButton
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:id="@+id/button_log_in_google"
+            android:layout_gravity="end"
+            android:layout_width="match_parent"
+            android:layout_height="47dp">
+        </com.google.android.gms.common.SignInButton>
+    </LinearLayout>
+
+
+</LinearLayout>
