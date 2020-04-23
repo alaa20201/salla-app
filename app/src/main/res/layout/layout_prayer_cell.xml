@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_view_fajar"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="10dp"
+        android:layout_weight="1"
+        android:clickable="true">
+
+        <LinearLayout
+            android:background="@drawable/gr_bg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:weightSum="2">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:weightSum="2"
+                android:orientation="vertical"
+                android:layout_height="60dp">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/text_view_prayer_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1.3"
+                    android:text="Al "
+                    android:textColor="#fff"
+                    android:layout_marginStart="5dp"
+                    android:textSize="30dp" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/text_view_prayer_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight=".5"
+                    android:layout_marginStart="20dp"
+                    android:text="4:20 AM"
+                    android:textAlignment="center"
+                    android:textColor="#fff"
+                    android:textSize="12sp" />
+            </LinearLayout>
+            <NumberPicker
+                android:theme="@style/AppTheme.Picker"
+                android:id="@+id/np_picker"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_marginEnd="5dp"
+                android:layout_gravity="center_vertical"
+                android:layout_height="match_parent"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

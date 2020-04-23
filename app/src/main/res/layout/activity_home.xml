@@ -43,7 +43,8 @@
             android:layout_alignParentBottom="true"
             app:itemBackground="@color/colorPrimaryDark"
 
-            app:menu="@menu/bottom_navigation"></com.google.android.material.bottomnavigation.BottomNavigationView>
+            app:menu="@menu/bottom_navigation"/>
+
 
     </RelativeLayout>
 

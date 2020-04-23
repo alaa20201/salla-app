@@ -57,31 +57,4 @@
         app:mcv_dateTextAppearance="@style/MyDaTextAppearance"
         />
 
-<!--    <CalendarView-->
-<!--        android:layout_below="@+id/image_view_home"-->
-<!--        android:layout_marginTop="20dp"-->
-<!--        android:selectedWeekBackgroundColor="@color/colorAccent"-->
-<!--        android:weekDayTextAppearance="@style/MyDaTextAppearance"-->
-<!--        android:dateTextAppearance="@style/MyDaTextAppearance"-->
-<!--        app:selectionColor="@color/colorAccent"-->
-<!--        android:id="@+id/calendar_view"-->
-<!--        app:headerColor="@color/colorPrimary"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:focusedMonthDateColor="@color/colorAccent"-->
-<!--        android:unfocusedMonthDateColor="@color/colorPrimary"-->
-<!--        />-->
-
-<!--    <CalendarView-->
-<!--        android:layout_below="@+id/image_view_home"-->
-<!--        android:layout_marginTop="20dp"-->
-<!--        android:selectedWeekBackgroundColor="@color/colorAccent"-->
-<!--        android:weekDayTextAppearance="@style/MyDaTextAppearance"-->
-<!--        android:dateTextAppearance="@style/MyDaTextAppearance"-->
-<!--        app:selectionColor="@color/colorAccent"-->
-<!--        android:id="@+id/calendar_view"-->
-<!--        app:headerColor="@color/colorPrimary"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content" />-->
-
 </RelativeLayout>

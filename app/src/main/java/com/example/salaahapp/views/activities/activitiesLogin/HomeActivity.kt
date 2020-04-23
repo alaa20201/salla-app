@@ -19,8 +19,10 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.lifecycle.ViewModelProviders
 import androidx.room.Room
 import com.example.salaahapp.database.MyAppDatabase
+import com.example.salaahapp.network.SallaApi
 import com.example.salaahapp.views.fragments.CalendarFragment
 import com.example.salaahapp.views.fragments.QuranFragment
 import com.example.salaahapp.views.fragments.VerseFragment
@@ -38,15 +40,21 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     lateinit var drawerLayout: DrawerLayout
     lateinit var navView: NavigationView
     lateinit var auth : FirebaseAuth
+    lateinit var homeViewModel: HomeViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+
+        homeViewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
+        homeViewModel.sallaApi = SallaApi.createService()
+        homeViewModel.getSallahData()
 
         setupToolbar()
         setBottomNavigation()
         onItemSelectedColorChanged()
         text_view_title.text = "Calendar"
         auth = FirebaseAuth.getInstance()
+
         navViewBttom.setOnNavigationItemSelectedListener(myOnNavigationItemSelectedListener)
         supportFragmentManager.beginTransaction().replace(R.id.container_fragment_home, CalendarFragment()).commit()
         setBottomNavigation()
