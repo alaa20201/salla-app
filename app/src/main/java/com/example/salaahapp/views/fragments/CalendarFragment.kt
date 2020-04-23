@@ -70,7 +70,7 @@ class CalendarFragment : Fragment() {
         homeViewModel.selected_date.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
             val inc: Boolean = checkDate(it)
             setTitleDate(it)
-            setTitleDateOutline(it, inc, view)
+            setTitleDateOutline(it, !inc, view)
         })
         onClickCalendar(view)
         return view
@@ -89,11 +89,11 @@ class CalendarFragment : Fragment() {
     fun decorateView(view: View, target: String, date: CalendarDay, inComplete: Boolean) {
         val currentDate = CalendarDay(Date(target))
         sameDayDecorator = SameDayDecorator(
-            CalendarDay.from(currentDate.year, currentDate.month, currentDate.day),
+            currentDate,
             inComplete
         )
         calendarView.addDecorators(sameDayDecorator)
-        setTitleDateOutline(date, inComplete, view)
+        setTitleDateOutline(date, !inComplete, view)
     }
 
     fun setTitleDateOutline(

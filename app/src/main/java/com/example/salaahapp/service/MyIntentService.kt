@@ -19,12 +19,6 @@ class MyIntentService: IntentService("myThread") {
     var userID = ""
 
     override fun onHandleIntent(intent: Intent?) {
-        // Toast.makeText(this,"Intent Service onHandle", Toast.LENGTH_SHORT).show()
-        //var t : Int = 10
-        //var s = intent?.extras?.getString("key1")
-//        for(i in 1..7){
-//            Thread.sleep(1000)
-//        }
         firebaseDatabase = FirebaseDatabase.getInstance()
         databaseReference = firebaseDatabase.getReference("users").child(userID).child("prayers")
         var prayerList = myDB.myDao().getAllPrayer()
