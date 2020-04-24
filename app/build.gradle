@@ -64,4 +64,6 @@ dependencies {
 
     // Job Scheduler
     implementation 'net.danlew:android.joda:2.10.3'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.2.2'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.2.2'
 }

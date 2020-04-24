@@ -38,15 +38,7 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
-        <receiver android:name=".service.MyReceiver">
-            <intent-filter>
-                <action android:name= "com.example.SENDALARM"/>
-            </intent-filter>
-        </receiver>
-        <service
-            android:name=".service.MyIntentService"
-            android:enabled="true"
-            android:exported="true" />
+
 
     </application>
 
