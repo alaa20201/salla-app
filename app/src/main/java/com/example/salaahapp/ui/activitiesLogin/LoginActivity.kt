@@ -68,7 +68,7 @@ class LoginActivity : AppCompatActivity() {
             }else{
                 progressBar.setMessage("Verfiying your number, Please hold tite , You will receive a code to start flying")
                 progressBar.show()
-                phoneNumber = "+1"+phoneText.text.toString()
+                phoneNumber = "+91"+phoneText.text.toString()
                 username = nameView.text.toString()
                 if (username.isNullOrBlank()){
                     Log.d("username","user epty")
