@@ -1,6 +1,7 @@
 package com.example.salaahapp.ui.calendarviews
 
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Build
@@ -9,6 +10,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.CalendarView
 import android.widget.TextView
 import androidx.annotation.RequiresApi
@@ -45,6 +47,7 @@ class CalendarFragment : Fragment() {
 
         // Inflate the layout for this fragment
         var view = inflater.inflate(R.layout.fragment_calendar, container, false)
+
         calendarView = view.findViewById(R.id.calendarView)
         date_view = view.findViewById(R.id.text_view_picked_date)
 

@@ -48,11 +48,6 @@ class PrayerAdapter(
                 }
             }
         })
-        holder.prayerTypeSpinner.setOnClickListener{
-            val imm: InputMethodManager =
-                holder.view.context.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
-            imm.hideSoftInputFromWindow(holder.view.windowToken, 0)
-        }
     }
     fun update(scrollState: Int, pos: Int){
         action(prayerList[pos].prayerType, scrollState, prayerList[pos].prayerTime, pos)
