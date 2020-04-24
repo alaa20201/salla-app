@@ -15,11 +15,11 @@
       },
       "oauth_client": [
         {
-          "client_id": "128184984107-dsr8qnp3apsbm7bs3ca35r9n2je8tfdo.apps.googleusercontent.com",
+          "client_id": "128184984107-7dm5f2j7h3mm12seqpvadj808r7lad03.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.salaahapp",
-            "certificate_hash": "006f338d406eed812e50d6bd58cf5d96c50371ea"
+            "certificate_hash": "224ddfc611671aa1a47cdb2dba02db032769fee0"
           }
         },
         {
