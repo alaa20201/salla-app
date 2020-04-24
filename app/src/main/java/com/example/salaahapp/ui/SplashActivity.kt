@@ -1,13 +1,18 @@
 package com.example.salaahapp.ui
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentActivity
 import com.example.salaahapp.R
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.iid.FirebaseInstanceId
 import kotlinx.android.synthetic.main.activity_splash.*
+
 
 class SplashActivity : AppCompatActivity() {
     lateinit var animation: Animation
@@ -24,6 +29,18 @@ class SplashActivity : AppCompatActivity() {
         handler.postDelayed({
             checkLogin()
         },5000)
+        FirebaseInstanceId.getInstance().instanceId
+            .addOnCompleteListener(OnCompleteListener { task ->
+                if (!task.isSuccessful) {
+                    //To do//
+                    return@OnCompleteListener
+                }
+
+                // Get the Instance ID token//
+                val token = task.result!!.token
+                Log.d("token", token)
+                val msg = getString(R.string.fcm_token, token)
+            })
     }
     private fun checkLogin(){
         var intent = Intent(this, MainActivity::class.java)
