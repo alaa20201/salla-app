@@ -51,7 +51,8 @@
                 android:layout_width="0dp"
                 android:layout_marginEnd="5dp"
                 android:layout_gravity="center_vertical"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                android:descendantFocusability="blocksDescendants"/>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 

@@ -1,7 +1,9 @@
 package com.example.salaahapp.ui.calendarviews
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.inputmethod.InputMethodManager
 import com.example.salaahapp.R
 import com.example.salaahapp.ui.homescreen.HomeActivity
 import kotlinx.android.synthetic.main.activity_date.*
