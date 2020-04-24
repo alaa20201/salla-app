@@ -59,7 +59,7 @@ fun convertToTiming(response: retrofit2.Response<ResponseBody>): Timings?{
 fun savePrayer(date: String, map: Map<String, String>){
     val nDate = date.replace("/","_")
     currentUserID?.let {
-        databaseReference?.child("users")?.child(it)?.child(nDate)?.updateChildren(map)
+        databaseReference?.child("users")?.child(it)?.child("prayers")?.child(nDate)?.updateChildren(map)
         ?.addOnCompleteListener {
             if (it.isSuccessful){
                 Log.d("prayersaved","successful")
@@ -69,11 +69,23 @@ fun savePrayer(date: String, map: Map<String, String>){
         }
     }
 }
+fun saveTheUserName(name: String){
+    currentUserID?.let {
+        databaseReference?.child("users")?.child(it)?.child("name")?.setValue(name)
+            ?.addOnCompleteListener {
+                if (it.isSuccessful){
+                    Log.d("name","successful")
+                }else{
+                    Log.d("name","faild")
+                }
+            }
+    }
+}
 fun retrievePrayers(action: (Map<String, Map<String, String>>) -> Unit){
     val map: Map<String, Map<String, String>>
     currentUserID?.let {
         map = hashMapOf()
-        databaseReference?.child("users")?.child(it)?.addValueEventListener(object : ValueEventListener {
+        databaseReference?.child("users")?.child(it)?.child("prayers")?.addValueEventListener(object : ValueEventListener {
         override fun onCancelled(p0: DatabaseError) {}
         override fun onDataChange(dataSnapshot: DataSnapshot) {
             for (child in dataSnapshot.children) {
@@ -90,18 +102,5 @@ object FireBaseUtils{
     var currentUserID: String? = auth.currentUser?.uid
     var firebaseDatabase: FirebaseDatabase? = FirebaseDatabase.getInstance()
     var databaseReference: DatabaseReference? = firebaseDatabase?.reference
-    var googleSignInOption: GoogleSignInOptions? = null
-    var mGoogleSignInClient: GoogleSignInClient? = null
-    fun signInWithGoogle(activity: Activity){
-        googleSignInOption = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(activity.getString(R.string.default_web_client_id))
-            .requestEmail()
-            .build()
-        googleSignInOption?.let {
-            mGoogleSignInClient = GoogleSignIn.getClient(activity,it)
-            val signInIntent : Intent? = mGoogleSignInClient?.signInIntent
-            activity.startActivityForResult(signInIntent, RC_SIGN_IN )
-        }
-    }
     val RC_SIGN_IN = 2
 }

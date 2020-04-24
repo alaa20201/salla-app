@@ -10,7 +10,7 @@ import android.media.RingtoneManager
 import android.net.Uri
 import android.util.Log
 import androidx.core.app.NotificationCompat
-import com.example.salaahapp.ui.MainActivity
+import com.example.salaahapp.ui.warning.WarningActivity
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 
@@ -29,7 +29,7 @@ class WarningService: FirebaseMessagingService() {
 
     private fun sendNotification(remoteMessage: RemoteMessage) {
         val notification = remoteMessage.notification
-        val intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(this, WarningActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         val pendingIntent = PendingIntent.getActivity(
             this, 0, intent,

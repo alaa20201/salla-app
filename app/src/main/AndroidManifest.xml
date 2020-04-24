@@ -2,24 +2,27 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.salaahapp">
 
-    <permission android:name="com.example.SENDALARM"/>
-    <uses-permission android:name="android.permission.SET_ALARM"/>
+    <permission android:name="com.example.SENDALARM" />
+
+    <uses-permission android:name="android.permission.SET_ALARM" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.SEND_SMS"/>
-
-
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
 
     <application
-        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name="com.example.salaahapp.ui.activitiesLogin.RequestPasswordActivity"></activity>
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".ui.warning.WarningActivity"></activity>
+        <activity
+            android:name=".ui.activitiesLogin.LoginActivity"
+            android:label="@string/title_activity_login2"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ui.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,15 +30,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.salaahapp.ui.activitiesLogin.RegisterActivity" />
-        <activity android:name="com.example.salaahapp.ui.activitiesLogin.LoginActivity" >
-
-        </activity>
-        <activity android:name="com.example.salaahapp.ui.calendarviews.DateActivity" />
-        <activity android:name=".ui.homescreen.HomeActivity">
-
-        </activity>
-        <activity android:name=".ui.MainActivity" />
+        <activity android:name=".ui.calendarviews.DateActivity" />
+        <activity android:name=".ui.homescreen.HomeActivity" />
 
         <meta-data
             android:name="preloaded_fonts"
@@ -44,7 +40,7 @@
         <service android:name=".fcmcenter.WarningService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
-                <action android:name="android.intent.action.RESPOND_VIA_MESSAGE"/>
+                <action android:name="android.intent.action.RESPOND_VIA_MESSAGE" />
             </intent-filter>
         </service>
     </application>
