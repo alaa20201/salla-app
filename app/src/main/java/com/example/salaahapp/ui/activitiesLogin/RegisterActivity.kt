@@ -1,4 +1,4 @@
-package com.example.salaahapp.views.activities.activitiesLogin
+package com.example.salaahapp.ui.activitiesLogin
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity

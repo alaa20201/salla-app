@@ -1,6 +1,7 @@
-package com.example.salaahapp.views.fragments
+package com.example.salaahapp.ui.calendarviews
 
 
+import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
@@ -14,10 +15,9 @@ import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModelProviders
 
 import com.example.salaahapp.R
-import com.example.salaahapp.helpers.decorator.SameDayDecorator
+import com.example.salaahapp.utils.SameDayDecorator
 import com.example.salaahapp.utils.retrievePrayers
-import com.example.salaahapp.views.activities.activitiesLogin.HomeViewModel
-import com.example.salaahapp.views.activities.fragmentsCalendar.DateActivity
+import com.example.salaahapp.ui.homescreen.HomeViewModel
 import com.prolificinteractive.materialcalendarview.CalendarDay
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView
 import com.prolificinteractive.materialcalendarview.OnDateSelectedListener
@@ -47,7 +47,7 @@ class CalendarFragment : Fragment() {
         var view = inflater.inflate(R.layout.fragment_calendar, container, false)
         calendarView = view.findViewById(R.id.calendarView)
         date_view = view.findViewById(R.id.text_view_picked_date)
-        retrievePrayers(::setPrayerData)
+
         //TODO
         /**
          * should recieve all the saved dates and add decorater (completed/incomplete)
@@ -56,61 +56,72 @@ class CalendarFragment : Fragment() {
          * prayer with the app and at the end should save today with adujsted values
          * if it is not save already by DateActivity
          */
-        var inc: Boolean = false
+        var inc = false
         calendarView.selectionMode = MaterialCalendarView.SELECTION_MODE_SINGLE
         homeViewModel.prayerData.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
             val currentDate = CalendarDay.today()
             for (key in it.keys) {
-                inc = checkDate(CalendarDay(Date(key)))
-                decorateView(view, key, currentDate, inc)
+                inc = isPrayersCompletedForThisDate(CalendarDay(Date(key)))
+                decorateView(key, inc)
                 inc = false
             }
+            homeViewModel.selected_date.observe(viewLifecycleOwner, androidx.lifecycle.Observer { cc->
+                val inc: Boolean = isPrayersCompletedForThisDate(cc)
+                setTitleDate(cc)
+                setTitleDateOutline(cc, inc, view)
+                if (homeViewModel.sourceview == "LGN") {
+                    val date = ((cc.month + 1).toString() + "/" + cc.day.toString() + "/" + cc.year)
+                    decorateView(date, inc)
+                }
+            })
+        })
 
-        })
-        homeViewModel.selected_date.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
-            val inc: Boolean = checkDate(it)
-            setTitleDate(it)
-            setTitleDateOutline(it, !inc, view)
-        })
         onClickCalendar(view)
         return view
     }
 
-    fun checkDate(d: CalendarDay): Boolean {
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        retrievePrayers(::setPrayerData)
+    }
+
+    fun isPrayersCompletedForThisDate(d: CalendarDay): Boolean {
         val date = ((d.month + 1).toString() + "/" + d.day.toString() + "/" + d.year)
+        if (homeViewModel.prayerData?.value?.containsKey(date) == false ) return false
         homeViewModel.prayerData?.value?.get(date)?.let {
             for (key in it.keys) {
-                if (it[key].isNullOrBlank()) return@checkDate false
+                val x = it[key]
+                if (it[key].isNullOrBlank()) {
+                    return@isPrayersCompletedForThisDate false
+                }
             }
         }
         return true
     }
 
-    fun decorateView(view: View, target: String, date: CalendarDay, inComplete: Boolean) {
+    fun decorateView(target: String, inComplete: Boolean) {
         val currentDate = CalendarDay(Date(target))
         sameDayDecorator = SameDayDecorator(
             currentDate,
             inComplete
         )
         calendarView.addDecorators(sameDayDecorator)
-        setTitleDateOutline(date, !inComplete, view)
     }
 
     fun setTitleDateOutline(
         date: CalendarDay,
-        inComplete: Boolean,
+        complete: Boolean,
         view: View
     ) {
-        if (inComplete) {
-            setTitleDate(date)
-            view.layout_picked_date.setBackgroundResource(R.drawable.layout_date_incomplete)
-            view.image_view_picked_date.setImageResource(R.drawable.ic_error_outline_black_24dp)
-
-
-        } else {
+        if (complete) {
             setTitleDate(date)
             view.layout_picked_date.setBackgroundResource(R.drawable.layout_date_complete)
             view.image_view_picked_date.setImageResource(R.drawable.ic_check_complete_24dp)
+
+        } else {
+            setTitleDate(date)
+            view.layout_picked_date.setBackgroundResource(R.drawable.layout_date_incomplete)
+            view.image_view_picked_date.setImageResource(R.drawable.ic_error_outline_black_24dp)
         }
     }
 
@@ -120,7 +131,6 @@ class CalendarFragment : Fragment() {
 
     fun setTitleDate(d: CalendarDay) {
         val Date = ((d.month + 1).toString() + "/" + d.day.toString() + "/" + d.year)
-        // set this date in TextView for Display
         date_view.text = Date
     }
 
@@ -154,6 +164,7 @@ class CalendarFragment : Fragment() {
                     intent.putParcelableArrayListExtra("prayers", prayerView.prayerView)
                     homeViewModel.setSelectedDay(date)
                     if (checkIfExist(mDate)) homeViewModel.updateDateSelected(mDate)
+                    else homeViewModel.resetDateSelected()
                     intent.putExtra("PickedDate", mDate)
                     startActivity(intent)
                 }

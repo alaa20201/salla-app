@@ -1,4 +1,4 @@
-package com.example.salaahapp.helpers.decorator
+package com.example.salaahapp.utils
 
 import android.graphics.Canvas
 import android.graphics.Color

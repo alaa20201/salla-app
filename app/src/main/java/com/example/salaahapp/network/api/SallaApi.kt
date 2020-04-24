@@ -1,4 +1,4 @@
-package com.example.salaahapp.network
+package com.example.salaahapp.network.api
 
 import okhttp3.ResponseBody
 import retrofit2.Call

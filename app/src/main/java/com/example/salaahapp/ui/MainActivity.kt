@@ -1,13 +1,12 @@
-package com.example.salaahapp.views.activities.activitiesLogin
+package com.example.salaahapp.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.applandeo.materialcalendarview.CalendarView
 import com.example.salaahapp.R
+import com.example.salaahapp.ui.activitiesLogin.LoginActivity
+import com.example.salaahapp.ui.activitiesLogin.RegisterActivity
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_calendar.*
-import java.util.*
 
 class MainActivity : AppCompatActivity() {
 

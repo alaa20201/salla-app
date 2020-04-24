@@ -1,4 +1,4 @@
-package com.example.salaahapp.views.activities.activitiesLogin
+package com.example.salaahapp.ui.activitiesLogin
 
 import android.content.Context
 import android.content.Intent
@@ -10,22 +10,13 @@ import com.example.salaahapp.R
 import com.example.salaahapp.utils.FireBaseUtils.RC_SIGN_IN
 import com.example.salaahapp.utils.FireBaseUtils.auth
 import com.example.salaahapp.utils.FireBaseUtils.currentUserID
-import com.example.salaahapp.utils.FireBaseUtils.databaseReference
-import com.example.salaahapp.utils.FireBaseUtils.firebaseDatabase
-import com.example.salaahapp.utils.FireBaseUtils.mGoogleSignInClient
 import com.example.salaahapp.utils.FireBaseUtils.signInWithGoogle
+import com.example.salaahapp.ui.homescreen.HomeActivity
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
-import com.google.android.gms.auth.api.signin.GoogleSignInClient
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.SignInButton
 import com.google.android.gms.common.api.ApiException
-import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.Task
-import com.google.firebase.auth.AuthResult
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
@@ -118,7 +109,10 @@ class LoginActivity : AppCompatActivity() {
     private fun updateUI(account: GoogleSignInAccount) {
         currentUserID = account.id
         currentUserID?.let {
-            startActivity(Intent(this,HomeActivity::class.java))
+            val intent = Intent(this,
+                HomeActivity::class.java)
+            intent.putExtra("from", "LGN")
+            startActivity(intent)
         }
 
     }

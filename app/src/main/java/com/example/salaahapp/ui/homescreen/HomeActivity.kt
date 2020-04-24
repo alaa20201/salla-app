@@ -1,18 +1,14 @@
-package com.example.salaahapp.views.activities.activitiesLogin
+package com.example.salaahapp.ui.homescreen
 
 import android.Manifest
-import android.content.Intent
 import android.content.pm.PackageManager
 import android.content.res.ColorStateList
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
-import android.widget.CalendarView
 import com.example.salaahapp.R
 
 import kotlinx.android.synthetic.main.activity_home.*
-import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.Toolbar
 import androidx.core.app.ActivityCompat
@@ -20,16 +16,13 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.ViewModelProviders
-import androidx.room.Room
-import com.example.salaahapp.database.MyAppDatabase
-import com.example.salaahapp.network.SallaApi
-import com.example.salaahapp.views.fragments.CalendarFragment
-import com.example.salaahapp.views.fragments.QuranFragment
-import com.example.salaahapp.views.fragments.VerseFragment
+import com.example.salaahapp.network.api.SallaApi
+import com.example.salaahapp.ui.calendarviews.CalendarFragment
+import com.example.salaahapp.ui.kitabsunnaviews.QuranFragment
+import com.example.salaahapp.ui.kitabsunnaviews.VerseFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
-import kotlinx.android.synthetic.main.tool_bar.*
 import java.util.*
 
 
@@ -47,6 +40,8 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         homeViewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
         homeViewModel.sallaApi = SallaApi.createService()
+        val bundle = intent.extras!!
+        homeViewModel.setDataFromBundle(bundle)
         homeViewModel.getSallahData()
 
         setupToolbar()
@@ -56,7 +51,9 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         auth = FirebaseAuth.getInstance()
 
         navViewBttom.setOnNavigationItemSelectedListener(myOnNavigationItemSelectedListener)
-        supportFragmentManager.beginTransaction().replace(R.id.container_fragment_home, CalendarFragment()).commit()
+        supportFragmentManager.beginTransaction().replace(R.id.container_fragment_home,
+            CalendarFragment()
+        ).commit()
         setBottomNavigation()
         setUpMultiplePermission()
     }
@@ -149,7 +146,9 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             when (item.itemId) {
                 R.id.navigation_calendar -> {
                     text_view_title.text = "Calendar"
-                    supportFragmentManager.beginTransaction().replace(R.id.container_fragment_home, CalendarFragment()).commit()
+                    supportFragmentManager.beginTransaction().replace(R.id.container_fragment_home,
+                        CalendarFragment()
+                    ).commit()
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.navigation_quran -> {

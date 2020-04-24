@@ -1,4 +1,4 @@
-package com.example.salaahapp.views.activities.fragmentsCalendar
+package com.example.salaahapp.ui.calendarviews
 
 import android.os.Bundle
 import android.util.Log

@@ -1,4 +1,4 @@
-package com.example.salaahapp.views.fragments
+package com.example.salaahapp.ui.kitabsunnaviews
 
 
 import android.os.Bundle
